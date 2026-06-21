@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management System</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Product Management System</h1>
+
+    <div class="top-section">
+        <a href="/add" class="btn add-btn">Add Product</a>
+
+        <form action="/" method="GET" class="search-form">
+            <input
+                type="text"
+                name="search"
+                placeholder="Search Product..."
+                value="<%= search %>"
+            >
+            <button type="submit" class="btn">Search</button>
+        </form>
+
+        <div class="sort-links">
+            <a href="/?sort=asc" class="btn">Price ↑</a>
+            <a href="/?sort=desc" class="btn">Price ↓</a>
+        </div>
+    </div>
+
+    <% if(products.length === 0){ %>
+        <h2 class="no-product">No Product Found</h2>
+    <% } else { %>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Company</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(product => { %>
+            <tr>
+                <td><%= product.name %></td>
+                <td><%= product.category %></td>
+                <td><%= product.company %></td>
+                <td>₹ <%= product.price %></td>
+                <td><%= product.stock %></td>
+                <td>
+                    <a href="/edit/<%= product._id %>" class="btn edit-btn">Edit</a>
+
+                    <form
+                        action="/delete/<%= product._id %>?_method=DELETE"
+                        method="POST"
+                        style="display:inline;"
+                    >
+                        <button type="submit" class="btn delete-btn" onclick="return confirm('Are you sure you want to delete <%= product.name %>?');">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <% } %>
+</div>
+
+</body>
+</html>

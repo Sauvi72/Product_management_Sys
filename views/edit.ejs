@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Edit Product</h1>
+
+    <form action="/edit/<%= product._id %>?_method=PUT" method="POST">
+        <label>Product Name</label>
+        <input type="text" name="name" value="<%= product.name %>" required>
+
+        <label>Category</label>
+        <input type="text" name="category" value="<%= product.category %>" required>
+
+        <label>Company</label>
+        <input type="text" name="company" value="<%= product.company %>" required>
+
+        <label>Price</label>
+        <input type="number" name="price" value="<%= product.price %>" min="0" required>
+
+        <label>Stock</label>
+        <input type="number" name="stock" value="<%= product.stock %>" min="0" required>
+
+        <button type="submit" class="btn edit-btn">Update Product</button>
+    </form>
+    <br>
+    <a href="/" class="btn">Back to Home</a>
+</div>
+
+</body>
+</html>
