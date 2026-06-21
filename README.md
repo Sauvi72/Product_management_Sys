@@ -190,6 +190,6 @@ This project helped me understand:
 
 # 👨‍💻 Author
 
--------------------------------------------------------------------** Saurav Kumar **----------------------------------------------------------
+----------------------** Saurav Kumar **----------------
 
 If you found this project useful, feel free to ⭐ this repository.
